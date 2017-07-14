@@ -18,7 +18,7 @@ const render = (root) => {
     wrapper.append(RegisterPlayers());
       break;
     case "game":
-    wrapper.append('game');
+    wrapper.append(Game());
       break;
     default:
     wrapper.append(Home());
