@@ -9,7 +9,6 @@ const Home = _ => {
   start_btn.on('click', _ => {
     state.current_screen = "register-players";
     render($('.root'));
-    console.log('go');
   });
   return home;
 }

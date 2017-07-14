@@ -1,6 +1,10 @@
 'use strict';
 const state = {
-  current_screen: null
+  current_screen: null,
+  players : {
+    player1 : null,
+    player2 : null
+  }
 }
 
 const render = (root) => {
@@ -11,8 +15,10 @@ const render = (root) => {
     wrapper.append(Home());
       break;
     case "register-players":
-    // wrapper.append(RegisterPlayers());
-    wrapper.append('Registro de jugadores');
+    wrapper.append(RegisterPlayers());
+      break;
+    case "game":
+    wrapper.append('game');
       break;
     default:
     wrapper.append(Home());
