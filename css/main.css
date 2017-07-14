@@ -9,3 +9,12 @@ body {
 .wrapper {
   padding: 50px 20% 0;
 }
+.game .board {
+  width: 50%;
+}
+.game .board .btn {
+  margin: 0.25rem;
+  padding: 0;
+  width: 100px;
+  height: 100px;
+}
