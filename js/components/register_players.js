@@ -13,9 +13,11 @@ const RegisterPlayers = _ => {
   register_players.append(start_btn);
 
   start_btn.on('click', _ => {
-    state.players.player1 = $('#player1').val();
-    state.players.player2 = $('#player2').val();
+    state.players[0].name = $('#player1').val();
+    state.current_player = 1;
+    state.players[1].name = $('#player2').val();
     state.current_screen = "game";
+    state.board = [["+","+","+"],["+","+","+"],["+","+","+"]];
     render($('.root'));
   });
 

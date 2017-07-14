@@ -1,10 +1,11 @@
 'use strict';
 const state = {
   current_screen: null,
-  players : {
-    player1 : null,
-    player2 : null
-  }
+  players: [{order:1, name: null, symbol: "x", movements:0},
+            {order:2, name: null, symbol: "o", movements:0}],
+  current_player: null,
+  board : null,
+  winner_player: null
 }
 
 const render = (root) => {
