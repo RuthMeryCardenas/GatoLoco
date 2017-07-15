@@ -24,3 +24,9 @@ body {
   padding: 1rem;
   width: 50%;
 }
+.game-detail .comments .comment{
+  border: 1px solid #26a69a;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  width: 50%;
+}

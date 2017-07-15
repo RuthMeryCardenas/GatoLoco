@@ -21,6 +21,7 @@ const Game = _ => {
       if (err) { return console.log(err.message);}
       state.history = json;
       console.log(state.history);
+      state.current_screen = "history";
       render($('.root'));
     });
   });

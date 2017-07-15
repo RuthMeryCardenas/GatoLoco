@@ -6,7 +6,11 @@ const state = {
   current_player: null,
   board : null,
   winner_player: null,
-  history: null
+  history: null,
+  game_selected: {
+    id:null,
+    comments: null
+  }
 }
 
 const render = (root) => {
@@ -24,6 +28,11 @@ const render = (root) => {
       break;
     case "history":
     wrapper.append(Record());
+      break;
+    case "game-detail":
+    wrapper.append('detalle del juego');
+    // wrapper.append(GameDetail());
+    // wrapper.append(Modal());
       break;
     default:
     wrapper.append(Home());
