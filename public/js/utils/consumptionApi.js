@@ -1,7 +1,7 @@
 'use strict';
 
 const getJSON = (partial_url, cb) => {
-  const url = 'http://test-ta.herokuapp.com/' + partial_url;
+  const url = 'https://test-ta.herokuapp.com/' + partial_url;
   const xhr = new XMLHttpRequest();
 
   xhr.addEventListener('load', () => {
@@ -16,7 +16,7 @@ const getJSON = (partial_url, cb) => {
 };
 
 const postJSON = (partial_url, body, cb) => {
-  const url = 'http://test-ta.herokuapp.com/' + partial_url;
+  const url = 'https://test-ta.herokuapp.com/' + partial_url;
   const xhr = new XMLHttpRequest();
 
   xhr.open('POST', url);
