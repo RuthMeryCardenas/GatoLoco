@@ -1,3 +1,4 @@
+'use strict';
 const Game = _ => {
   const game= $('<section class="game center-align"></section>');
   const title= $('<h5>Turno de </h5>');
@@ -23,7 +24,7 @@ const Board = _ => {
   const total_boxes= 9;
 
   for (var i = 0; i < total_boxes; i++) {
-    box_btn = $('<a class="waves-effect waves-light btn teal lighten-2" data-position="' + i +'"></a>');
+    const box_btn = $('<a class="waves-effect waves-light btn teal lighten-2" data-position="' + i +'"></a>');
     box_btn.on('click', (e) => {
       if (state.current_player == 1) {
         play(state.players[0], e.target);
@@ -63,15 +64,34 @@ const play= (player, box) => {
       $('h5').empty();
       $('h5').text('El juego ha terminado');
       $('.message span').text(player.name);
+      var body = {
+          winner_player: state.players[0].name,
+          loser_player: state.players[1].name,
+          number_of_turns_to_win: state.players[0].movements
+      };
+      postJSON('games', body, (response)=> {
+        console.log(response);
+        state.current_screen = "history";
+        render($('.root'));
+      });
       break;
     case 2:
       state.winner_player= player.order;
       $('h5').empty();
       $('h5').text('El juego ha terminado');
       $('.message span').text(player.name);
+      var body = {
+          winner_player: state.players[1].name,
+          loser_player: state.players[0].name,
+          number_of_turns_to_win: state.players[1].movements
+      };
+      postJSON('games', body, (response)=> {
+        console.log(response);
+        state.current_screen = "history";
+        render($('.root'));
+      });
       break;
     case 3:
-      console.log('seguir jugando');
       if (player.order == 1) {
         state.current_player= 2;
         $('#current-player').text(state.players[1].name);

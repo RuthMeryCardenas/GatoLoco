@@ -21,6 +21,10 @@ const render = (root) => {
     case "game":
     wrapper.append(Game());
       break;
+    case "history":
+    wrapper.append('Historial');
+    // wrapper.append(Record());
+      break;
     default:
     wrapper.append(Home());
   }

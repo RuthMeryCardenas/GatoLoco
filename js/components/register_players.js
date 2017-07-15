@@ -1,3 +1,4 @@
+'use strict';
 const RegisterPlayers = _ => {
   const register_players = $('<section class="register-players center-align"></section>');
   const label_1 = $('<h5>Ingrese el nombre del jugador 1</h5>');
