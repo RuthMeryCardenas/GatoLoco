@@ -1,17 +1,39 @@
 const GameDetail = () => {
   const game_detail = $('<section class="game-detail center-align"></section>');
+  const links = $('<div class="right-align"></div>');
+  const go_home = $('<a href="#">Home</a>');
+  const go_history = $('<a href="#">Historial</a>');
+  go_home.on('click', (e) => {
+    e.preventDefault();
+    state.current_screen = null;
+    render($('.root'));
+  });
+  go_history.on('click', (e) => {
+    e.preventDefault();
+    getJSON('games', (err, json) => {
+      if (err) { return console.log(err.message);}
+      state.history = json;
+      state.current_screen = "history";
+      render($('.root'));
+    });
+  });
+  links.append(go_home);
+  links.append(' | ');
+  links.append(go_history);
+
   let text = state.game_selected.data.winner_player + " le gano a " + state.game_selected.data.loser_player + " en " + state.game_selected.data.number_of_turns_to_win + " movimientos";
   const title = $('<h5 class="center-align">' + text +'</h5>');
 
+  game_detail.append(links);
   game_detail.append(title);
-  game_detail.append(Comments());
+  game_detail.append(Comments(state.game_selected.comments));
   return game_detail;
 }
 const Comments = (commentsList) => {
   const comments = $('<div class="comments"></div>');
-  if (state.game_selected.comments.length > 0) {
-    $.each(commentsList, (index, comments) => {
-      comments.append(CommentItem(comments));
+  if (commentsList.length > 0) {
+    $.each(commentsList, (index, comment) => {
+      comments.append(CommentItem(comment));
     });
   }else {
     comments.append('Aún no hay comentarios');

@@ -1,6 +1,27 @@
 'use strict';
 const Game = _ => {
   const game= $('<section class="game center-align"></section>');
+  const links = $('<div class="right-align"></div>');
+  const go_home = $('<a href="#">Home</a>');
+  const go_history = $('<a href="#">Historial</a>');
+  go_home.on('click', (e) => {
+    e.preventDefault();
+    state.current_screen = null;
+    render($('.root'));
+  });
+  go_history.on('click', (e) => {
+    e.preventDefault();
+    getJSON('games', (err, json) => {
+      if (err) { return console.log(err.message);}
+      state.history = json;
+      state.current_screen = "history";
+      render($('.root'));
+    });
+  });
+  links.append(go_home);
+  links.append(' | ');
+  links.append(go_history);
+
   const title= $('<h5>Turno de </h5>');
   const current_player= $('<span id="current-player">' + state.players[0].name +'</span>');
   const player1_movements= $('<p>Movimientos <span id="player1-name">' + state.players[0].name + '</span> <span id="player1-movements">0</span></p>');
@@ -8,6 +29,7 @@ const Game = _ => {
   const message= $('<p class="message">Gano <span></span></p>');
   const send_history_btn= $('<a class="waves-effect waves-light btn">mandar al historial</a>');
 
+  game.append(links);
   title.append(current_player);
   game.append(title);
   game.append(Board());
