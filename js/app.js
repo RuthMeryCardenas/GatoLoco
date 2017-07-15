@@ -5,7 +5,8 @@ const state = {
             {order:2, name: null, symbol: "o", movements:0}],
   current_player: null,
   board : null,
-  winner_player: null
+  winner_player: null,
+  history: null
 }
 
 const render = (root) => {
@@ -22,8 +23,7 @@ const render = (root) => {
     wrapper.append(Game());
       break;
     case "history":
-    wrapper.append('Historial');
-    // wrapper.append(Record());
+    wrapper.append(Record());
       break;
     default:
     wrapper.append(Home());

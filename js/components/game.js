@@ -16,6 +16,15 @@ const Game = _ => {
   game.append(message);
   game.append(send_history_btn);
 
+  send_history_btn.on('click', _ => {
+    getJSON('games', (err, json) => {
+      if (err) { return console.log(err.message);}
+      state.history = json;
+      console.log(state.history);
+      render($('.root'));
+    });
+  });
+
   return game;
 }
 
@@ -65,14 +74,12 @@ const play= (player, box) => {
       $('h5').text('El juego ha terminado');
       $('.message span').text(player.name);
       var body = {
-          winner_player: state.players[0].name,
-          loser_player: state.players[1].name,
-          number_of_turns_to_win: state.players[0].movements
+        winner_player: state.players[0].name,
+        loser_player: state.players[1].name,
+        number_of_turns_to_win: state.players[0].movements
       };
       postJSON('games', body, (response)=> {
-        console.log(response);
         state.current_screen = "history";
-        render($('.root'));
       });
       break;
     case 2:
@@ -86,9 +93,7 @@ const play= (player, box) => {
           number_of_turns_to_win: state.players[1].movements
       };
       postJSON('games', body, (response)=> {
-        console.log(response);
         state.current_screen = "history";
-        render($('.root'));
       });
       break;
     case 3:

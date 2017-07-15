@@ -13,8 +13,14 @@ body {
   width: 50%;
 }
 .game .board .btn {
+  height: 100px;
   margin: 0.25rem;
   padding: 0;
   width: 100px;
-  height: 100px;
+}
+.history .games .game {
+  border: 1px solid #26a69a;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  width: 50%;
 }
