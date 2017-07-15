@@ -25,11 +25,15 @@ const GameItem = (data) => {
   show_comments.on('click', (e) => {
     e.preventDefault();
     state.game_selected.id = $(e.target).data('id');
-    getJSON('games/'+ state.game_selected.id + '/comments', (err, json) => {
+    getJSON('games/'+ state.game_selected.id, (err, json) => {
       if (err) { return console.log(err.message);}
-      state.game_selected.comments = json;
-      state.current_screen = "game-detail";
-      render($('.root'));
+      state.game_selected.data = json;
+      getJSON('games/'+ state.game_selected.id + '/comments', (err, json) => {
+        if (err) { return console.log(err.message);}
+        state.game_selected.comments = json;
+        state.current_screen = "game-detail";
+        render($('.root'));
+      });
     });
   });
 

@@ -20,7 +20,6 @@ const Game = _ => {
     getJSON('games', (err, json) => {
       if (err) { return console.log(err.message);}
       state.history = json;
-      console.log(state.history);
       state.current_screen = "history";
       render($('.root'));
     });

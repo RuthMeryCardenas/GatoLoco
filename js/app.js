@@ -9,6 +9,7 @@ const state = {
   history: null,
   game_selected: {
     id:null,
+    data:null,
     comments: null
   }
 }
@@ -30,8 +31,7 @@ const render = (root) => {
     wrapper.append(Record());
       break;
     case "game-detail":
-    wrapper.append('detalle del juego');
-    // wrapper.append(GameDetail());
+    wrapper.append(GameDetail());
     // wrapper.append(Modal());
       break;
     default:

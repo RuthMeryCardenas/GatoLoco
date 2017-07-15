@@ -25,8 +25,6 @@ const postJSON = (partial_url, body, cb) => {
   xhr.onreadystatechange = function () {
     if (this.readyState === 4) {
       cb(this.responseText);
-    }else {
-      console.log('Error al enviar datos');
     }
   };
 

@@ -1,6 +1,6 @@
-const GameDetail = (data) => {
+const GameDetail = () => {
   const game_detail = $('<section class="game-detail center-align"></section>');
-  let text = data.winner_player + " le gano a " + data.loser_player + " en " + data.number_of_turns_to_win + " movimientos";
+  let text = state.game_selected.data.winner_player + " le gano a " + state.game_selected.data.loser_player + " en " + state.game_selected.data.number_of_turns_to_win + " movimientos";
   const title = $('<h5 class="center-align">' + text +'</h5>');
 
   game_detail.append(title);
@@ -9,9 +9,13 @@ const GameDetail = (data) => {
 }
 const Comments = (commentsList) => {
   const comments = $('<div class="comments"></div>');
-  $.each(commentsList, (index, comments) => {
-    comments.append(CommentItem(comments));
-  });
+  if (state.game_selected.comments.length > 0) {
+    $.each(commentsList, (index, comments) => {
+      comments.append(CommentItem(comments));
+    });
+  }else {
+    comments.append('Aún no hay comentarios');
+  }
   return comments;
 }
 const CommentItem = (data) => {
